@@ -22,7 +22,7 @@ function C1(source , itemStack) {
         if(responce.selection == 0) source.addEffect(`speed`, 100 );
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
-        if(itemStack.getComponent(`durability`).damage > 9) {
+        if(itemStack.getComponent(`durability`).damage < 291) {
             itemStack.getComponent(`durability`).damage += 10
             source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
         } else {
