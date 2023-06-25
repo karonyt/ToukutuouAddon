@@ -4,30 +4,57 @@ import * as UI from "@minecraft/server-ui"
 world.afterEvents.itemUse.subscribe(ev => {
     const { source , itemStack } = ev;
     switch(itemStack.typeId){
-        case 'karo:c-1': {
-            C1(source , itemStack);
+        case 'karo:c1': {
+            ibutu(source , itemStack);
             break;
         }
     }
 })
 
-function C1(source , itemStack) {
+/*
+ibutu関数について
+
+1行目
+name=遺物名
+lore=説明文
+durability=消費する耐久力
+
+2行目
+ボタン一覧
+
+3行目
+ボタンに対応するコマンドたち
+*/
+class Data {
+    c1 = [
+      { name: "エジプトの葬儀師が宿ったナイフ" , "lore": "(C級 一般クラス/消耗性遺物)", "durability": "5"},
+      { button1: "スピードアップ", button2: "筋力アップ" },
+      { 0: "effect @s speed 5 0", 1: "effect @s strength 5 0" },
+    ];
+  
+    dataArray2 = [
+      { name: "データ1", value: "値1" },
+      { name: "データ2", value: "値2" },
+      { name: "データ3", value: "値3" }
+    ];
+  }
+  
+const ibutuData = new Data()
+
+function ibutu(source , itemStack) {
     const durability = itemStack.getComponent(`durability`)
     const form = new UI.ActionFormData()
-    form.title(`エジプトの葬儀師が宿ったナイフ`)
-    form.body(`(C級 一般クラス/消耗性遺物)\n使用可能回数:(${durability.maxDurability - durability.damage}/${durability.maxDurability})`)
-    form.button(`スピードアップ`)
-    form.button(`筋力アップ`)
-    for(let i = 0; i > 1; i++){
-        form.button(`${i}`)
+    form.title(`${ibutuData[itemStack.typeId.split(`:`)[1]][0].name}`)
+    form.body(`${ibutuData[itemStack.typeId.split(`:`)[1]][0].lore}\n使用可能回数:(${durability.maxDurability - durability.damage}/${durability.maxDurability})`)
+    for(let key in ibutuData[itemStack.typeId.split(`:`)[1]][1]){
+        form.button(`${ ibutuData[itemStack.typeId.split(`:`)[1]][1][key]}`)
     }
     form.show(source).then(responce => {
         if(responce.canceled) return;
-        if(responce.selection == 0) source.addEffect(`speed`, 100 );
-        if(responce.selection == 1) source.addEffect(`strength`, 100 );
+        source.runCommandAsync(`${ibutuData[itemStack.typeId.split(`:`)[1]][2][responce.selection]}`)
         //耐久度ダウン
-        if(itemStack.getComponent(`durability`).damage < 96) {
-            itemStack.getComponent(`durability`).damage += 5
+        if(itemStack.getComponent(`durability`).damage < durability.maxDurability - Number(ibutuData[itemStack.typeId.split(`:`)[1]][0].durability)) {
+            itemStack.getComponent(`durability`).damage += Number(ibutuData[itemStack.typeId.split(`:`)[1]][0].durability)
             source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
         } else {
             source.getComponent(`inventory`).container.setItem(source.selectedSlot)
