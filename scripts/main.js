@@ -3,12 +3,7 @@ import * as UI from "@minecraft/server-ui"
 
 world.afterEvents.itemUse.subscribe(ev => {
     const { source , itemStack } = ev;
-    switch(itemStack.typeId){
-        case 'karo:c1': {
-            ibutu(source , itemStack);
-            break;
-        }
-    }
+    if(itemStack.typeId.startWith(`karo:`) && itemStack.typeId !== `karo:repair`) ibutu(source , itemStack);
 })
 
 /*
