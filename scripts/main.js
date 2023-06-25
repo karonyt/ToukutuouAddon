@@ -18,23 +18,28 @@ durability=消費する耐久力
 2行目
 ボタン一覧
 
-3行目
-ボタンに対応するコマンドたち(必ずキー名は0から始まる整数にすること(responce.selectionで整数が出力されるため))
+3行目以降
+ボタンに対応するコマンドたち(ボタン一つにつき1行)
 */
 
 
 class Data {
+    //cクラス
     c1 = [
       { name: "エジプトの葬儀師が宿ったナイフ" , "lore": "(C級 一般クラス/消耗性遺物)", "durability": "5"},
       { button1: "スピードアップ", button2: "筋力アップ" },
-      { 0: "effect @s speed 5 0", 1: "effect @s strength 5 0" },
+      { 1: "effect @s speed 5 0"}, 
+      { 2: "effect @s strength 5 0"}
     ];
   
-    dataArray2 = [
-      { name: "データ1", value: "値1" },
-      { name: "データ2", value: "値2" },
-      { name: "データ3", value: "値3" }
-    ];
+
+    //sクラス
+    s1 = [
+        { name: "ジョン・ミルトン、盲目の詩人の本" , "lore": "(S級 英雄伝説クラス/帰属性遺物)", "durability": "5"},
+        { button1: "使用する", button2: "終了" },
+        { 1: "effect @s blindness 10000 30", 2: "effect @s regeneration 10000 10" },
+        { 1: "effect @s blindness 0 31", 2: "effect @s regeneration 0 11" }
+      ];
   }
   
 //DataクラスをibutuDataとする
@@ -60,7 +65,9 @@ function ibutu(source , itemStack) {
         //キャンセルされたら終了
         if(responce.canceled) return;
         //押されたボタンによってコマンドを変える
-        source.runCommandAsync(`${ibutuData[itemStack.typeId.split(`:`)[1]][2][responce.selection]}`)
+        for( const command in ibutuData[itemStack.typeId.split(`:`)[1]][responce.selection + 2] ){
+            source.runCommandAsync(`${ibutuData[itemStack.typeId.split(`:`)[1]][responce.selection + 2][command]}`)
+        }
         //耐久度ダウンさせる 耐久値がまだある場合
         if(itemStack.getComponent(`durability`).damage < durability.maxDurability - Number(ibutuData[itemStack.typeId.split(`:`)[1]][0].durability)) {
             //現在の耐久値をマイナス(負傷値を上げる) このときの数値はDataクラスから取る
