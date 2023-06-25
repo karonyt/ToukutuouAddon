@@ -12,8 +12,10 @@ world.afterEvents.itemUse.subscribe(ev => {
 })
 
 function C1(source , itemStack) {
+    let durability = itemStack.getComponent(`itemDurability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
+    .body(`耐久力:${durability.damage}`)
     .button(`スピードアップ`)
     .button(`筋力アップ`)
     .show(source).then(responce => {
@@ -21,7 +23,7 @@ function C1(source , itemStack) {
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
         system.runTimeout( () => 
-        source.triggerEvent(`karo:damage`)
+        durability.damage -= 10
         , 1);
         
     })
