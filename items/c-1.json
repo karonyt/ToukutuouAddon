@@ -13,13 +13,13 @@
         "minecraft:max_stack_size": 1,
         "minecraft:hand_equipped": true,
         "minecraft:durability": {
-          "max_durability": 300
+          "max_durability": 100
         },
         "minecraft:repairable": {
           "repair_items": [
             {
               "items": ["karo:repair"],
-              "repair_amount": 30
+              "repair_amount": 10
             }
           ]
         },
