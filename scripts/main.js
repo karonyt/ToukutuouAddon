@@ -36,7 +36,7 @@ class Data {
     //sクラス
     s1 = [
         { name: "ジョン・ミルトン、盲目の詩人の本" , "lore": "(S級 英雄伝説クラス/帰属性遺物)", "durability": "15"},
-        { button1: "使用する", button2: "終了" },
+        { button1: "使用する", button2: "効果終了" },
         { 1: "effect @s blindness 10000 30", 2: "effect @s regeneration 10000 10" },
         { 1: "effect @s blindness 0 31", 2: "effect @s regeneration 0 11" }
       ];
