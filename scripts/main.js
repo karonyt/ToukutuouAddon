@@ -13,7 +13,7 @@ world.afterEvents.itemUse.subscribe(ev => {
 
 function C1(source , itemStack) {
     itemStack.getComponent(`durability`).damage += 10
-    const  itemStack.getComponent(`durability`)
+    const durability = itemStack.getComponent(`durability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
     .body(`耐久力:${durability.maxDurability - durability.damage}`)
