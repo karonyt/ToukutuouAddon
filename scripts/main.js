@@ -23,8 +23,7 @@ function C1(source , itemStack) {
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
         itemStack.getComponent(`durability`).damage += 10
-        system.runTimeout( () => 
-        source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
-        , 1);
+        if(itemStack.getComponent(`durability`).damage > 0) source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
+        if(itemStack.getComponent(`durability`).damage <= 0) source.getComponent(`inventory`).container.setItem(source.selectedSlot)
     })
 }
