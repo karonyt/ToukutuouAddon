@@ -15,7 +15,7 @@ function C1(source , itemStack) {
     const durability = itemStack.getComponent(`durability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
-    .body(`使用可能回数:(${durability.maxDurability - durability.damage}/100)`)
+    .body(`(C級 一般クラス/消耗性遺物)\n使用可能回数:(${durability.maxDurability - durability.damage}/${durability.maxDurability})`)
     .button(`スピードアップ`)
     .button(`筋力アップ`)
     .show(source).then(responce => {
