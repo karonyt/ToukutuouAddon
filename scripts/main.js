@@ -15,7 +15,7 @@ function C1(source , itemStack) {
     const durability = itemStack.getComponent(`durability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
-    .body(`耐久力:${durability.maxDurability - durability.damage}\n ${itemStack.getComponent(`tekitou`).a}`)
+    .body(`耐久力:${durability.maxDurability - durability.damage}\n ${itemStack.getComponent(`tekitou`)}`)
     .button(`スピードアップ`)
     .button(`筋力アップ`)
     .show(source).then(responce => {
