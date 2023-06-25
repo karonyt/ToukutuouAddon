@@ -12,7 +12,7 @@ world.afterEvents.itemUse.subscribe(ev => {
 })
 
 function C1(source , itemStack) {
-    let durability = itemStack.getComponent(`itemDurability`)
+    let durability = itemStack.getComponent(`durability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
     .body(`耐久力:${durability.damage}`)
