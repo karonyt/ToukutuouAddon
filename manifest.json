@@ -1,0 +1,29 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "盗掘王の遺物などを再現したアドオン\nmade by かろん",
+        "name": "盗掘王アドオン",
+        "uuid": "104f0dcf-f25c-4394-a4d0-9a04cebf9ae5",
+        "version": [ 0, 0, 1 ],
+        "min_engine_version": [ 1, 19, 40 ]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "script",
+            "entry": "scripts/main.js",
+            "uuid": "947abd6a-4d56-43be-9bda-76a4e6681d90",
+            "version": [0, 0, 1]
+        }
+    ],
+    "dependencies": [
+        {
+          "module_name": "@minecraft/server",
+          "version": "1.3.0-beta"
+        },
+        {
+          "module_name": "@minecraft/server-ui",
+          "version": "1.1.0-beta"
+        }
+    ]
+}
