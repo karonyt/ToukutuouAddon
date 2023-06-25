@@ -1,7 +1,7 @@
 import { Player, world } from "@minecraft/server";
 import * as UI from "@minecraft/server-ui"
 
-world.afterEvents.useItem.subscribe(ev => {
+world.afterEvents.itemUse.subscribe(ev => {
     const { source , itemStack } = ev;
     switch(itemStack.typeId){
         case 'karo:c-1': {
