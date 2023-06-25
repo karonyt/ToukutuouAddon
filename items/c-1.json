@@ -7,9 +7,7 @@
       },
   
       "components": {
-        "minecraft:tekitou":{
-            "a":"こんにちは"
-        },
+        "minecraft:tekitou":"こんにちは",
         "minecraft:icon": {
           "texture": "c-1"
         },
