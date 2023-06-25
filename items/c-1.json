@@ -1,0 +1,59 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+      "description": {
+        "identifier": "karo:c-1",
+        "category": "Equipment"
+      },
+  
+      "components": {
+        "minecraft:icon": {
+          "texture": "c-1"
+        },
+        "minecraft:max_stack_size": 1,
+        "minecraft:hand_equipped": true,
+        "minecraft:durability": {
+          "max_durability": 300
+        },
+        "minecraft:repairable": {
+          "repair_items": [
+            {
+              "items": ["karo:repair"],
+              "repair_amount": 30
+            }
+          ]
+        },
+        "minecraft:damage": 8,
+        "minecraft:weapon": {
+          "on_hurt_entity":{
+            "event": "karo:damage",
+            "target": "self"
+          }
+        },
+        "minecraft:mining_speed": 1,
+        "minecraft:digger": {
+          "use_efficiency": 1,
+          "on_dig": {
+            "event": "karo:damage",
+            "target": "self"
+          },
+          "destroy_speeds": [
+            {
+              "block": {
+                "tags": "q.any_tag('stone')"
+              },
+              "speed": 2
+            }
+          ]
+        }
+      },
+      "events": {
+        "karo:damage": {
+          "damage": {
+            "type": "void",
+            "amount": 1
+          }
+        }
+      }
+    }
+  }
