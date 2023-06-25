@@ -9,6 +9,7 @@ world.afterEvents.itemUse.subscribe(ev => {
 
 /*
 Dataクラスについて
+このクラスは遺物の設定である
 
 1行目
 name=遺物名
