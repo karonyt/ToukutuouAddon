@@ -12,7 +12,7 @@ world.afterEvents.itemUse.subscribe(ev => {
 })
 
 function C1(source , itemStack) {
-    new ActionFormData()
+    new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
     .button(`スピードアップ`)
     .show(source).then(responce => {
