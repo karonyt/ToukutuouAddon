@@ -1,4 +1,4 @@
-import { Player, world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 import * as UI from "@minecraft/server-ui"
 
 world.afterEvents.itemUse.subscribe(ev => {
@@ -19,6 +19,9 @@ function C1(source , itemStack) {
         if(responce.selection == 0) player.addEffect(`minecraft:speed`, 5 );
 
         //耐久度ダウン
+        system.runTimeout( () => 
         itemStack.triggerEvent(`karo:damage`)
+        , 1);
+        
     })
 }
