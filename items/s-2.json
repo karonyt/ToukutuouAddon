@@ -1,0 +1,36 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:item": {
+      "description": {
+        "identifier": "karo:s2",
+        "category": "Equipment"
+      },
+  
+      "components": {
+        "minecraft:icon": {
+          "texture": "potion_bottle_lingering"
+        },
+        "minecraft:max_stack_size": 1,
+        "minecraft:hand_equipped": true,
+        "minecraft:durability": {
+          "max_durability": 20
+        },
+        "minecraft:repairable": {
+          "repair_items": [
+            {
+              "items": ["karo:repair"],
+              "repair_amount": 2
+            }
+          ]
+        }
+      },
+      "events": {
+        "karo:damage": {
+          "damage": {
+            "type": "void",
+            "amount": 1
+          }
+        }
+      }
+    }
+  }
