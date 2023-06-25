@@ -20,7 +20,7 @@ function C1(source , itemStack) {
 
         //耐久度ダウン
         system.runTimeout( () => 
-        itemStack.triggerEvent(`karo:damage`)
+        source.triggerEvent(`karo:damage`)
         , 1);
         
     })
