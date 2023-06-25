@@ -12,7 +12,6 @@ world.afterEvents.itemUse.subscribe(ev => {
 })
 
 function C1(source , itemStack) {
-    itemStack.getComponent(`durability`).damage += 10
     const durability = itemStack.getComponent(`durability`)
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
@@ -23,6 +22,7 @@ function C1(source , itemStack) {
         if(responce.selection == 0) source.addEffect(`speed`, 100 );
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
+        itemStack.getComponent(`durability`).damage += 10
         system.runTimeout( () => 
         source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
         , 1);
