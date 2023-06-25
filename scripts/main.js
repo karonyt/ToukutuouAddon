@@ -22,8 +22,11 @@ function C1(source , itemStack) {
         if(responce.selection == 0) source.addEffect(`speed`, 100 );
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
-        itemStack.getComponent(`durability`).damage += 10
-        if(itemStack.getComponent(`durability`).damage > 0) source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
-        if(itemStack.getComponent(`durability`).damage <= 0) source.getComponent(`inventory`).container.setItem(source.selectedSlot)
+        if(itemStack.getComponent(`durability`).damage > 0) {
+            itemStack.getComponent(`durability`).damage += 10
+            source.getComponent(`inventory`).container.setItem(source.selectedSlot , itemStack)
+        } else {
+            source.getComponent(`inventory`).container.setItem(source.selectedSlot)
+        }
     })
 }
