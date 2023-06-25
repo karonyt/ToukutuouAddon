@@ -16,7 +16,7 @@ function C1(source , itemStack) {
     .title(`エジプトの葬儀師が宿ったナイフ`)
     .button(`スピードアップ`)
     .show(source).then(responce => {
-        if(responce.selection == 1) player.addEffect(`minecraft:speed`, 5 );
+        if(responce.selection == 0) player.addEffect(`minecraft:speed`, 5 );
 
         //耐久度ダウン
         itemStack.triggerEvent(`karo:damage`)
