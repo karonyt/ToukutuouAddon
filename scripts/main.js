@@ -13,6 +13,7 @@ world.afterEvents.itemUse.subscribe(ev => {
 
 function C1(source , itemStack) {
     let durability = itemStack.getComponent(`durability`)
+    let damage = durability.damage
     new UI.ActionFormData()
     .title(`エジプトの葬儀師が宿ったナイフ`)
     .body(`耐久力:${durability.maxDurability - durability.damage}`)
@@ -23,7 +24,7 @@ function C1(source , itemStack) {
         if(responce.selection == 1) source.addEffect(`strength`, 100 );
         //耐久度ダウン
         system.runTimeout( () => 
-        durability.damage += 10
+        damage += 10
         , 1);
         
     })
