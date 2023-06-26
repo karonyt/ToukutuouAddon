@@ -27,7 +27,7 @@ durability=消費する耐久力
 class Data {
     //cクラス
     c1 = [
-      { name: "エジプトの葬儀師が宿ったナイフ" , "lore": "(C級 一般クラス/消耗性遺物)", "durability": "5"},
+      { name: "エジプトの葬儀師が宿ったナイフ" , lore: "(C級 一般クラス/消耗性遺物)", durability: "5"},
       { button1: "スピードアップ", button2: "筋力アップ" },
       { 1: "effect @s speed 5 0"}, 
       { 2: "effect @s strength 5 0"}
@@ -36,18 +36,27 @@ class Data {
 
     //sクラス
     s1 = [
-        { name: "ジョン・ミルトン、盲目の詩人の本" , "lore": "(S級 英雄伝説クラス/帰属性遺物)", "durability": "15"},
+        { name: "ジョン・ミルトン、盲目の詩人の本" , lore: "(S級 英雄伝説クラス/帰属性遺物)", durability: "15"},
         { button1: "使用する", button2: "効果終了" },
         { 1: "effect @s blindness 10000 30", 2: "effect @s regeneration 10000 10" },
         { 1: "effect @s blindness 0 31", 2: "effect @s regeneration 0 11" }
       ];
 
     s2 = [
-        { name: "ジョン・ミルトン、盲目の詩人の本" , "lore": "(S級 英雄伝説クラス/帰属性遺物)", "durability": "5"},
+        { name: "	ヒポクラテスのミアスマ伝説" , lore: "(S級 英雄伝説クラス/消耗性遺物)", durability: "5"},
         { button1: "自分に使用する", button2: "周りに使用する" },
         { 1: "effect @s poison 100 1", 2: "effect @s wither 10 2" },
         { 1: "effect @a[r=15] blindness 30 10", 2: "effect @e[rm=1,r=20] wither 20 5" }
     ];
+
+    s3 = [
+        { name: "寂しい神の招待状" , lore: "(SS級 神クラス/消耗性遺物)", durability: "1"},
+        { button1: "自分に使用する", button2: "周りの人に使用する", button3: "一番近くの人に使用する" },
+        { 1: "spreadplayers ~ ~ 500 1000 @s" },
+        { 1: `execute as @s unless entity @a[rm=1,r=10] run tellraw @s {"rawtext":[{"text":"§c対象がいません"}]}` , 2:"spreadplayers ~ ~ 500 1000 @a[r=10,rm=1]" },
+        { 1: `execute as @s unless entity @p[rm=1,r=10] run tellraw @s {"rawtext":[{"text":"§c対象がいません"}]}` , 2:"spreadplayers ~ ~ 500 1000 @p[r=10,rm=1]" },
+    ];
+
   }
   
 //DataクラスをibutuDataとする
