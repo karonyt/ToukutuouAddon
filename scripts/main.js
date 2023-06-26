@@ -46,7 +46,7 @@ class Data {
         { name: "ジョン・ミルトン、盲目の詩人の本" , "lore": "(S級 英雄伝説クラス/帰属性遺物)", "durability": "5"},
         { button1: "自分に使用する", button2: "周りに使用する" },
         { 1: "effect @s poison 100 1", 2: "effect @s wither 10 2" },
-        { 1: "effect @a[r=15] blindness 30 10", 2: "effect @a[rm=1,r=20] wither 20 5" }
+        { 1: "effect @a[r=15] blindness 30 10", 2: "effect @e[rm=1,r=20] wither 20 5" }
     ];
   }
   
