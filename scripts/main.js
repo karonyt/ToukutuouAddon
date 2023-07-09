@@ -62,8 +62,6 @@ class Data {
 //DataクラスをibutuDataとする
 const ibutuData = new Data()
 
-
-u
 function ibutu(source , itemStack) {
     //耐久値のコンポーネント取得
     const durability = itemStack.getComponent(`durability`)
